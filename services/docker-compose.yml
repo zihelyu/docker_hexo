@@ -1,0 +1,21 @@
+version: '2'
+services:
+  hexo:
+    build: ./hexo/
+    ports:
+      - 4000:4000
+    volumes:
+      - ../app:/usr/src/app
+    restart: always
+    networks:
+      network:
+        ipv4_address: 172.100.0.2
+    container_name: hexo
+
+networks:
+  network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.100.0.0/24
+          gateway: 172.100.0.1
