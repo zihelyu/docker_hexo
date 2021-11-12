@@ -2,7 +2,8 @@ FROM node:13-alpine
 
 WORKDIR /usr/src/app
 
-RUN apk update \
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories \
+    && apk update \
     && npm install -g hexo-cli
 
 # set registry
